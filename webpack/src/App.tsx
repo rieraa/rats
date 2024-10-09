@@ -1,8 +1,8 @@
 // App.tsx
-import React from 'react';
+import './APP.css'
 
 const App = () => {
-  return <div>HelloWorld</div>;
-};
+  return <div className='title'>HelloWorld</div>
+}
 
-export default App;
+export default App

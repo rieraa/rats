@@ -1,6 +1,7 @@
-const { Configuration } = require('webpack');
-const path = require('node:path');
-const htmlWebpackPlugin = require('html-webpack-plugin');
+const { Configuration } = require('webpack')
+const path = require('node:path')
+const htmlWebpackPlugin = require('html-webpack-plugin')
+const { Parser } = require('webpack')
 
 /**
  * @type{Configuration}
@@ -17,8 +18,19 @@ const config = {
     rules: [
       {
         test: /\.(ts|js)x?$/,
-        use: 'ts-loader',
         exclude: /node_modules/,
+        use: {
+          loader: 'swc-loader',
+          options: {
+            jsc: {
+              transform: {
+                react: {
+                  runtime: 'automatic',
+                },
+              },
+            },
+          },
+        },
       },
       {
         test: /\.(png|svg|jpg|gif)$/i,
@@ -41,6 +53,6 @@ const config = {
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.json'],
   },
-};
+}
 
-module.exports = config;
+module.exports = config
