@@ -1,1 +1,9 @@
+# Dependency files
 node_modules/
+*-lock.yaml
+
+# Software configuration
+.idea/
+
+# Build output
+dist/
